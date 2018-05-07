@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Panel, InputGroup, FormControl, Button, Alert} from 'react-bootstrap';
+import {Panel, InputGroup, FormControl, Button} from 'react-bootstrap';
 
 class NameGenerator extends Component {
   state = {

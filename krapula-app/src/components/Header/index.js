@@ -1,10 +1,11 @@
 import React from 'react';
 import {Jumbotron} from 'react-bootstrap';
+import Slogans from '../Slogans/';
 
 const Header = () => (
   <Jumbotron className='header text-center'>
     <h1>krapu.la</h1>
-    <p>[Slogan goes here]</p>
+    <Slogans />
   </Jumbotron>
 );
 
