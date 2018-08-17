@@ -3,7 +3,7 @@ import {Panel, InputGroup, FormControl, Button} from 'react-bootstrap';
 
 class NameGenerator extends Component {
   state = {
-    value: null,
+    value: "",
     result: null
   }
 

@@ -1,19 +1,27 @@
 import React, {Component} from 'react';
+import SweetAlert from 'sweetalert2-react';
 
 class index extends Component {
     constructor(props) {
         super(props)
-
         this.setKrapula = this.setKrapula.bind(this);
     }
-    setKrapula(event){
-        this.props.setKrapula(event.target.value)
+    setKrapula(userHasKrapula){
+        this.props.setKrapula(userHasKrapula)
     }
     render() {
         return (
             <div>
-                <button value={true} onClick={this.setKrapula}> Damn I'm hungover </button>
-                <button value={false} onClick={this.setKrapula}> Damn I'm not hungover </button>
+                <SweetAlert
+                    show={true}
+                    title="Huomio!"
+                    text="Onko sinulla krapula?"
+                    confirmButtonText={"ON"}
+                    showCancelButton
+                    cancelButtonText={"ei"}
+                    onConfirm={() => this.setKrapula(true)}
+                    onCancel={() => this.setKrapula(false)}
+                />
             </div>
         );
     }
