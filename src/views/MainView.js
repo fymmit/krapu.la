@@ -1,21 +1,29 @@
-import React from 'react';
-import Header from '../components/Header';
-import {Grid, Row, Col} from 'react-bootstrap'
-import NameGenerator from '../components/NameGenerator';
-import LastKrappe from '../components/LastKrappe';
+import React, {Component} from 'react';
+import KrapulaView from './KrapulaView'
+import NoKrapulaView from './NoKrapulaView'
+import KrapulaChecker from '../components/KrapulaChecker'
 
-const MainView = () => (
-  <div>
-    <Header/>
-    <Grid>
-      <Row>
-        <Col lg={12} md={12} sm={12} xs={12}>
-          <NameGenerator type="krapula"/>
-        </Col>
-      </Row>
-      <LastKrappe/>
-    </Grid>
-  </div>
-);
+class MainView extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            hasKrapula: null,
+        }
+        this.setKrapula = this.setKrapula.bind(this);
+    }
+
+    setKrapula(hasKrapula) {
+        this.setState({ hasKrapula: hasKrapula === "true" });
+    }
+
+    render() {
+        return (
+            <div>
+            { this.state.hasKrapula === null ? <KrapulaChecker setKrapula={this.setKrapula}/>
+                : this.state.hasKrapula ? <KrapulaView/> : <NoKrapulaView/> }
+            </div>
+        );
+    }
+}
 
 export default MainView;
