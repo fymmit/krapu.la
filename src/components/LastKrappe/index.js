@@ -9,7 +9,7 @@ class LastKrappe extends Component {
     render() {
         return (
             <div>
-                <div>Jäbä krappes: { localStorage.getItem("krappe") }</div>
+                <div>Last krappe: { localStorage.getItem("krappe") || 'Never.' }</div>
             </div>
 
         )
