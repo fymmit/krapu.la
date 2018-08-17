@@ -13,7 +13,7 @@ class MainView extends Component {
     }
 
     setKrapula(hasKrapula) {
-        this.setState({ hasKrapula: hasKrapula === "true" });
+        this.setState({ hasKrapula: hasKrapula });
     }
 
     render() {
