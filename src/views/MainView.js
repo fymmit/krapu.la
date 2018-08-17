@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import {Grid, Row, Col} from 'react-bootstrap'
 import NameGenerator from '../components/NameGenerator';
+import LastKrappe from '../components/LastKrappe';
 
 const MainView = () => (
   <div>
@@ -12,6 +13,7 @@ const MainView = () => (
           <NameGenerator type="krapula"/>
         </Col>
       </Row>
+      <LastKrappe/>
     </Grid>
   </div>
 );
