@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "prop-types": "^15.6.1",
-    "react": "^16.3.2",
+    "react": "^16.9.0",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.9.0",
     "react-scripts": "1.1.4",
     "sweetalert2-react": "^0.7.2"
   },
