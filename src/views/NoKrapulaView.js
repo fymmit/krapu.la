@@ -1,40 +1,54 @@
-import React, {Component} from 'react';
-import SingleYoutubePlayer from '../components/YoutubePlayer/SingleYoutubePlayer'
-import MultiYoutubePlayer from "../components/YoutubePlayer/MultiYoutubePlayer";
+import React, {useState} from 'react';
 import {Button} from 'react-bootstrap'
 
-class NoKrapulaView extends Component {
-    constructor(props){
-        super(props);
+Array.prototype.random = function () {
+  return this[Math.floor(Math.random() * this.length)]
+};
 
-        this.state = { numberOfClicks: 0 }
-    }
+const greetings = ['moro', 'haloo', 'Tervehdys', 'wadap'];
+const aijat = ['äijät', 'hemmot'];
+const cookingVerbs = ['duunaan', 'säädän', 'väsään', 'kokkaan'];
 
-    generateRandomChars(length) {
-        const allowedChars = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        const chars = [];
-        for (var i = 0; i < length; i++) {
-            chars.push(allowedChars[Math.floor(Math.random() * allowedChars.length)]);
-        }
-        return chars.join("");
-    }
 
-    render() {
-        const random11CharacterString = this.generateRandomChars(11);
-        const { numberOfClicks } = this.state;
-        return (
-            <div style={{textAlign: 'center'}}>
-                { numberOfClicks <= 3
-                    ? <SingleYoutubePlayer
-                        YTUrlID={random11CharacterString}/>
-                    : <MultiYoutubePlayer
-                        generateRandomVideoID={() => this.generateRandomChars(11)}/>
-                }
-                <Button onClick={() => this.setState({numberOfClicks: numberOfClicks + 1})}>
-                    {numberOfClicks < 3 ? 'Try again?' : 'Try again!?'}</Button>
-            </div>
-        )
+const NoKrapulaView = () => {
+  const getRandomStoryWords = () => {
+    return {
+      greeting: greetings.random(),
+      aijat: aijat.random(),
+      cookingVerb: cookingVerbs.random()
     }
-}
+  };
+
+  const sw = getRandomStoryWords();
+
+  const cookingSentences = [`tänään mä ${sw.cookingVerbs} teil kissaa liekitettynä`, `pistän koht tos snadit väännöt teil`];
+  const iLoveYouSentences = [`rakastan sua ${sw.aijat}`, `loveen sua ${sw.aijat}`];
+
+
+  const getRandomStorySentences = () => {
+    return {
+      cookingSentence: cookingSentences.random(),
+      iLoveYouSentence: iLoveYouSentences.random(),
+    }
+  };
+
+  const ss = getRandomStorySentences();
+
+  const getRandomStory = () => {
+    return `${sw.greeting} ${sw.aijat} :D mitä ${sw.aijat}. kuulii nähä teit :D
+    ${ss.cookingSentence}. tän reseptin opin kun olin indois maalaan :D
+    pistetää sekaa vähän jättiläispunapuun ydintä antaan vähä siihe semmost twistii :D ja sit viel keitetään etikassa :D
+    lopuks annetaan jäähtyy pari päivää. nonii toivottavasti maistuu. ${ss.iLoveYouSentence} :D`;
+  };
+
+  const [story, setStory] = useState(getRandomStory());
+
+  return (
+      <div style={{padding: "2em", whiteSpace: 'pre-line'}}>
+        <p>{story}</p>
+        <Button onClick={() => {setStory(getRandomStory())}}>Uus</Button>
+      </div>
+  )
+};
 
 export default NoKrapulaView;
